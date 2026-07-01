@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salma Mahmoud | Portfolio</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-bg: #E8DCC8; /* البيج الرئيسي */
+            --secondary-bg: #FBF9F4;
+            --accent-purple: #A87CD1; /* البنفسجي لـ مذاكرة */
+            --accent-orange: #F0916A; /* البرتقالي الصاعد */
+            --text-dark: #2B2D42;
+            --text-light: #2B2D42;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--secondary-bg);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(232, 220, 200, 0.95);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav .logo {
+            color: var(--text-light);
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-orange);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--primary-bg) 60%, #E9DCEF);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            color: var(--accent-orange);
+            margin-bottom: 25px;
+            font-weight: 300;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero p {
+            max-width: 600px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        /* Section Global Layout */
+        section {
+            padding: 100px 80px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-orange);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .about-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent-purple);
+        }
+
+        .about-box h3 {
+            color: var(--accent-purple);
+            margin-bottom: 15px;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            text-align: center;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-card i {
+            font-size: 2.5rem;
+            color: var(--accent-orange);
+            margin-bottom: 15px;
+        }
+
+        /* Projects Section */
+        .project-section {
+            background-color: #f1f3f6;
+        }
+
+        .case-study {
+            background: var(--primary-bg);
+            color: var(--text-light);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .case-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(43,45,66,0.15);
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .case-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .timeline {
+            list-style: none;
+            border-right: 2px solid var(--accent-orange);
+            padding-right: 20px;
+        }
+
+        .timeline li {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .timeline li::before {
+            content: '';
+            position: absolute;
+            right: -26px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            background: var(--accent-orange);
+            border-radius: 50%;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .gallery-item .placeholder-img {
+            height: 200px;
+            background: #e2e8f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #718096;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+            cursor: zoom-in;
+            transition: transform 0.2s ease;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.03);
+        }
+
+        .lightbox-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .lightbox-overlay.active {
+            display: flex;
+        }
+
+        .lightbox-overlay img {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 2.2rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .gallery-desc {
+            padding: 15px;
+        }
+
+        /* Contact Section */
+        footer {
+            background: var(--primary-bg);
+            color: var(--text-light);
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            font-size: 1.8rem;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-orange);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            section { padding: 60px 20px; }
+            .about-container, .case-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+            nav { padding: 15px 20px; }
+            nav ul { display: none; } /* للموبايل يمكن تطوير منيو تظهر وتختفي */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">SALMA MAHMOUD</div>
+        <ul>
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#about">نبذة عني</a></li>
+            <li><a href="#skills">المهارات</a></li>
+            <li><a href="#portfolio">المشاريع</a></li>
+            <li><a href="#contact">تواصل معي</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <h1>SALMA MAHMOUD AHMED</h1>
+        <h2>Social Media Manager & Content Strategist</h2>
+        <p>خبرة أكثر من 4 سنوات في إدارة منصات التواصل الاجتماعي، بناء استراتيجيات المحتوى الإبداعي، والتسويق التعليمي الاحترافي للشركات والمنصات الرقمية.</p>
+        <a href="#portfolio" style="background: var(--accent-orange); color: white; padding: 12px 30px; border-radius: 25px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(255,87,34,0.4);">تصفح أعمالي</a>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">من أنا؟</h2>
+        <div class="about-container">
+            <div class="about-box">
+                <h3>رؤيتي ورسالتي</h3>
+                <p style="line-height: 1.8; margin-bottom: 15px;"><strong>الرؤية:</strong> تمكين العلامات التجارية من بناء حضور رقمي قوي ومستدام عبر محتوى إبداعي واستراتيجيات تسويقية مبنية على تحليل البيانات الدقيقة.</p>
+                <p style="line-height: 1.8;"><strong>الرسالة:</strong> صناعة تجارب رقمية هادفة تساعد الشركات على النمو، جذب العملاء المستهدفين، وبناء علاقات طويلة الأمد مع جماهيرهم.</p>
+            </div>
+            <div class="about-box" style="border-top-color: var(--accent-orange);">
+                <h3>التعليم والشهادات</h3>
+                <ul style="list-style: none; line-height: 2;">
+                    <li><i class="fas fa-graduation-cap" style="color: var(--accent-orange);"></i> دبلوم مهني في التسويق الرقمي - IMFND Academy (2025)</li>
+                    <li><i class="fas fa-code" style="color: var(--accent-orange);"></i> Web Developer (Front-End) - IT Sharks Academy</li>
+                    <li><i class="fas fa-university" style="color: var(--accent-orange);"></i> ليسانس آداب - جامعة القاهرة</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" style="background-color: #ffffff;">
+        <h2 class="section-title">المهارات والأدوات</h2>
+        <div class="skills-grid">
+            <div class="skill-card"><i class="fas fa-bullhorn"></i><h4>Content Strategy</h4></div>
+            <div class="skill-card"><i class="fas fa-pen-nib"></i><h4>Creative Copywriting</h4></div>
+            <div class="skill-card"><i class="fas fa-users"></i><h4>Community Management</h4></div>
+            <div class="skill-card"><i class="fas fa-palette"></i><h4>Canva & Graphic Design</h4></div>
+            <div class="skill-card"><i class="fab fa-facebook-square"></i><h4>Meta Business Suite</h4></div>
+            <div class="skill-card"><i class="fas fa-chart-bar"></i><h4>Google Analytics</h4></div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="project-section">
+        <h2 class="section-title">معرض الأعمال ودراسات الحالة</h2>
+
+        <!-- Case Study: Scale Point -->
+        <div class="case-study">
+            <div class="case-header">
+                <h3>دراسة حالة استراتيجية: Scale Point</h3>
+                <span style="background: var(--accent-orange); padding: 5px 15px; border-radius: 15px; font-size: 0.85rem;">إستراتيجية متكاملة</span>
+            </div>
+            <p style="margin-bottom: 20px; opacity: 0.9; line-height: 1.8;">تطوير خطة تسويق وإطلاق شاملة لوكالة تسويق رقمي ناشئة في القاهرة، تستهدف إدارة الصفحات وجذب عملاء للمشاريع الصغيرة والمتوسطة من نقطة الصفر وحتى القمة.</p>
+
+            <a href="imgs/SCALE%20POINT%204.pdf" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; background: var(--accent-orange); color: #fff; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-size: 0.9rem; margin-bottom: 20px;">
+                <i class="fas fa-file-pdf"></i> عرض خطة الاستراتيجية كاملة (PDF)
+            </a>
+
+            <div class="case-grid">
+                <div>
+                    <h4>🎯 الأهداف المرحلية المحققة:</h4>
+                    <ul style="list-style: none; line-height: 2; margin-top: 10px;">
+                        <li><i class="fas fa-check-circle" style="color: var(--accent-orange); margin-left: 8px;"></i> بناء علامة تجارية موثوقة للشركة في السوق المصري.</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--accent-orange); margin-left: 8px;"></i> الوصول لـ 1,000 متابع مستهدف خلال أول 3 أشهر.</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--accent-orange); margin-left: 8px;"></i> تأمين 3 عملاء دائمين بنهاية الشهر السادس من الإطلاق.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>🗓️ خطة المحتوى والنمو (6 أشهر):</h4>
+                    <ul class="timeline">
+                        <li><strong>الأسبوع 1:</strong> التوعية بالبراند وفريق العمل (Awareness).</li>
+                        <li><strong>الأسبوع 2:</strong> إبراز الخبرة عبر نصائح تسويقية (Engagement).</li>
+                        <li><strong>الأسبوع 3:</strong> إطلاق عرض فحص الصفحات المجاني (Conversion).</li>
+                        <li><strong>الأسبوع 4:</strong> بناء الثقة عبر كواليس العمل وتقييمات العملاء.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mozakrah Projects Grid -->
+        <h3 style="margin-bottom: 25px; color: var(--text-dark);">نماذج منصة مذاكرة التعليمية:</h3>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="imgs/2.jpg" alt="إعلان أيام التوجيه Orientation Day لمنصة Mozakrah" onclick="openLightbox(this.src)">
+                <div class="gallery-desc">
+                    <h5>إعلانات أيام التوجيه (Orientation Day)</h5>
+                    <p style="font-size: 0.85rem; color: #666; margin-top: 5px;">صياغة وتصميم المحتوى الترحيبي واللوجستي للطلاب لتهيئة العام الدراسي بدقة.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="imgs/3.jpg" alt="منشور تعريفي بمسار الـ IGCSE على منصة Mozakrah" onclick="openLightbox(this.src)">
+                <div class="gallery-desc">
+                    <h5>إدارة الحملات الترويجية للمناهج الدولية</h5>
+                    <p style="font-size: 0.85rem; color: #666; margin-top: 5px;">إعداد وتنظيم نصوص وجداول مجموعات الـ IGCSE والـ American Diploma.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="imgs/4.jpg" alt="منشور تفاصيل جلسات الأورينتيشن لمواد الكيمياء على منصة Mozakrah" onclick="openLightbox(this.src)">
+                <div class="gallery-desc">
+                    <h5>صناعة المحتوى وكتابة الإعلانات (Copywriting)</h5>
+                    <p style="font-size: 0.85rem; color: #666; margin-top: 5px;">كتابة نصوص جذابة باللغتين العربية والإنجليزية تخاطب أولياء الأمور وتجيب على تساؤلاتهم الأكاديمية.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="lightbox-overlay" id="lightboxOverlay" onclick="closeLightbox()">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img id="lightboxImg" src="" alt="عرض مكبر للصورة" onclick="event.stopPropagation()">
+    </div>
+
+    <!-- Footer / Contact Section -->
+    <footer id="contact">
+        <h2 style="margin-bottom: 20px;">دعنا نصنع قصة نجاحك القادمة معاً!</h2>
+        <p style="margin-bottom: 30px; opacity: 0.8;">متاحة الآن للمشاريع المستقلة والعقود طويلة الأجل.</p>
+        <div class="social-links" style="margin-bottom: 30px;">
+            <a href="mailto:salmam6412@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://linkedin.com/in/salma-mahmoud-0a3947214" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <p style="font-size: 0.85rem; opacity: 0.6;">&copy; 2026 Salma Mahmoud. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function openLightbox(src) {
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightboxOverlay').classList.add('active');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightboxOverlay').classList.remove('active');
+        }
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
+
